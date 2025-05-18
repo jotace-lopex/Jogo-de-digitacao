@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu - Aprendendo a Digitar</title>
+  <style>
+    :root {
+      --bg: #0A1F44;
+      --accent: #FF8500;
+      --text: #F8F8F8;
+      --button-hover: #FFB347;
+    }
+    body {
+      background: var(--bg);
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+    }
+    .container {
+      background: var(--bg);
+      border: 4px solid var(--accent);
+      border-radius: 32px;
+      padding: 2.5rem 2rem 3rem 2rem;
+      min-width: 350px;
+      max-width: 400px;
+      box-shadow: 0 10px 40px 0 rgba(0,0,0,0.7), 0 1.5px 16px 0 rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .logo {
+      width: 160px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: -12px;
+    }
+    .logo img {
+      width: 120px;
+      height: 90px;
+      display: block;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    .btn {
+      width: 90%;
+      min-width: 220px;
+      max-width: 340px;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 1.1rem 0.5rem;
+      background: var(--bg);
+      color: var(--text);
+      border: 3px solid var(--accent);
+      border-radius: 16px;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0002;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7em;
+      transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.18s cubic-bezier(.39,1.41,.45,1.01);
+    }
+    .btn:focus,
+    .btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+      outline: 2px solid var(--accent);
+      transform: scale(1.07);
+      z-index: 2;
+    }
+    @media (max-width: 540px) {
+      .container {
+        min-width: 0;
+        width: 98vw;
+        max-width: 99vw;
+        padding: 1.5rem 0.5rem 2rem 0.5rem;
+      }
+      .logo {
+        width: 90px;
+        height: 60px;
+      }
+      .logo img {
+        width: 70px;
+        height: 45px;
+      }
+      .btn {
+        font-size: 1.1rem;
+        padding: 0.8rem 0.2rem;
+      }
+      h1 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-labelledby="titulo">
+    <div class="logo" aria-label="Logo teclado">
+      <img src="src/imagens/logo.png" alt="Ícone de teclado" style="width:220px; height:160px; display:block; margin:auto;">
+    </div>
+    <h1 id="titulo">APRENDENDO A DIGITAR</h1>
+    <button class="btn" onclick="window.location.href='letras.html'">COMEÇAR</button>
+    <button class="btn" onclick="window.location.href='tutorial.html'">TUTORIAL</button>
+  </main>
+</body>
+</html>
