@@ -4,277 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lição de Letras</title>
-  <style>
-    body {
-      background-color: #0A1F44;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 2rem;
-      color: #F8F8F8;
-      min-height: 100vh;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #FF8800;
-      margin-bottom: 2rem;
-    }
-    .letra-alvo {
-      font-size: 7rem;
-      color: #FF8800;
-      margin: 2rem 0 1.3rem 0;
-      text-shadow: 2px 2px 8px #000a;
-    }
-    .mensagem {
-      font-size: 2rem;
-      margin: 0.5rem 0 1.2rem 0;
-      min-height: 2.5rem;
-      font-weight: bold;
-      color: #119B3A;
-    }
-    .teclado {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      background: #0A1F44;
-      padding: 1.2rem;
-      border-radius: 18px;
-      box-shadow: 0 8px 32px #0008;
-      width: max-content;
-      margin-left: auto;
-      margin-right: auto;
-      border: 4px solid #fff;
-      transition: box-shadow 0.2s;
-    }
-    .linha {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-    }
-    .tecla {
-      width: 58px;
-      height: 58px;
-      font-size: 2.15rem;
-      background: #0A1F44;
-      color: #fff;
-      border: 3px solid #FF8800;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s, color 0.15s, border-color 0.2s, box-shadow 0.2s;
-      user-select: none;
-      font-family: Arial, sans-serif;
-      outline: none;
-      box-sizing: border-box;
-      font-weight: bold;
-      box-shadow: 0 2px 10px #0005;
-    }
-    .tecla.ativa {
-      background: #FF8800;
-      color: #0A1F44;
-      border-color: #fff;
-      box-shadow: 0 0 18px #FF8800, 0 2px 10px #0005;
-    }
-    .tecla.certa {
-      background: #18D262 !important;
-      color: #fff !important;
-      border-color: #fff !important;
-      box-shadow: 0 0 16px #18D262, 0 2px 10px #0005 !important;
-    }
-    .tecla.errada {
-      background: #FF3030 !important;
-      color: #fff !important;
-      border-color: #fff !important;
-      box-shadow: 0 0 18px #FF3030, 0 2px 10px #0005 !important;
-    }
-    .botoes {
-      margin-top: 2.2rem;
-      margin-bottom: 2rem;
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .botoes button {
-      font-size: 1.5rem;
-      padding: 1rem 2.3rem;
-      border: none;
-      border-radius: 10px;
-      background-color: #FF8800;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 2px 8px #0006;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      transition: background 0.15s, color 0.15s, transform 0.18s;
-    }
-    .botoes button:hover,
-    .botoes button:focus {
-      background-color: #fff;
-      color: #FF8800;
-      outline: 2px solid #FF8800;
-      transform: scale(1.08);
-    }
-    #proximoBtn {
-      background: #18D262 !important;
-      color: #fff !important;
-      border: none;
-      transition: background 0.15s, color 0.15s, transform 0.18s;
-      box-shadow: 0 2px 8px #18D262cc;
-    }
-    #proximoBtn:hover, #proximoBtn:focus {
-      background: #14b450 !important;
-      color: #fff !important;
-      outline: 2px solid #18D262;
-      transform: scale(1.08);
-    }
-  </style>
+  <link rel="stylesheet" href="src/css/fase1.css" />
 </head>
 <body>
-    <h1>Lição 1: Pressione a Letra</h1>
-    <div class="letra-alvo" id="letraAlvo">A</div>
-    <div class="mensagem" id="mensagem"></div>
-  
-    <div class="teclado" id="teclado" aria-label="Teclado virtual ABNT2">
-      <div class="linha">
-        <div class="tecla" data-key="Backquote">`</div>
-        <div class="tecla" data-key="Digit1">1</div>
-        <div class="tecla" data-key="Digit2">2</div>
-        <div class="tecla" data-key="Digit3">3</div>
-        <div class="tecla" data-key="Digit4">4</div>
-        <div class="tecla" data-key="Digit5">5</div>
-        <div class="tecla" data-key="Digit6">6</div>
-        <div class="tecla" data-key="Digit7">7</div>
-        <div class="tecla" data-key="Digit8">8</div>
-        <div class="tecla" data-key="Digit9">9</div>
-        <div class="tecla" data-key="Digit0">0</div>
-        <div class="tecla" data-key="Minus">-</div>
-        <div class="tecla" data-key="Equal">=</div>
-      </div>
-      <div class="linha">
-        <div class="tecla" data-key="KeyQ">Q</div>
-        <div class="tecla" data-key="KeyW">W</div>
-        <div class="tecla" data-key="KeyE">E</div>
-        <div class="tecla" data-key="KeyR">R</div>
-        <div class="tecla" data-key="KeyT">T</div>
-        <div class="tecla" data-key="KeyY">Y</div>
-        <div class="tecla" data-key="KeyU">U</div>
-        <div class="tecla" data-key="KeyI">I</div>
-        <div class="tecla" data-key="KeyO">O</div>
-        <div class="tecla" data-key="KeyP">P</div>
-        <div class="tecla" data-key="BracketLeft">[</div>
-        <div class="tecla" data-key="BracketRight">]</div>
-        <div class="tecla" data-key="Backslash">\</div>
-      </div>
-      <div class="linha">
-        <div class="tecla" data-key="KeyA">A</div>
-        <div class="tecla" data-key="KeyS">S</div>
-        <div class="tecla" data-key="KeyD">D</div>
-        <div class="tecla" data-key="KeyF">F</div>
-        <div class="tecla" data-key="KeyG">G</div>
-        <div class="tecla" data-key="KeyH">H</div>
-        <div class="tecla" data-key="KeyJ">J</div>
-        <div class="tecla" data-key="KeyK">K</div>
-        <div class="tecla" data-key="KeyL">L</div>
-        <div class="tecla" data-key="Semicolon">Ç</div>
-        <div class="tecla" data-key="Quote">'</div>
-        <div class="tecla" data-key="IntlBackslash">~</div>
-      </div>
-      <div class="linha">
-        <div class="tecla" data-key="ShiftLeft" style="width:90px">Shift</div>
-        <div class="tecla" data-key="KeyZ">Z</div>
-        <div class="tecla" data-key="KeyX">X</div>
-        <div class="tecla" data-key="KeyC">C</div>
-        <div class="tecla" data-key="KeyV">V</div>
-        <div class="tecla" data-key="KeyB">B</div>
-        <div class="tecla" data-key="KeyN">N</div>
-        <div class="tecla" data-key="KeyM">M</div>
-        <div class="tecla" data-key="Comma">,</div>
-        <div class="tecla" data-key="Period">.</div>
-        <div class="tecla" data-key="Slash">;</div>
-        <div class="tecla" data-key="ShiftRight" style="width:90px">Shift</div>
-      </div>
-      <div class="linha">
-        <div class="tecla" data-key="Space" style="width: 360px;">Espaço</div>
-      </div>
+  <h1>Lição 1: Pressione a Letra</h1>
+  <div class="letra-alvo" id="letraAlvo">A</div>
+  <div class="mensagem" id="mensagem"></div>
+
+  <div class="teclado" id="teclado" aria-label="Teclado virtual ABNT2">
+    <div class="linha">
+      <div class="tecla" data-key="Backquote">`</div>
+      <div class="tecla" data-key="Digit1">1</div>
+      <div class="tecla" data-key="Digit2">2</div>
+      <div class="tecla" data-key="Digit3">3</div>
+      <div class="tecla" data-key="Digit4">4</div>
+      <div class="tecla" data-key="Digit5">5</div>
+      <div class="tecla" data-key="Digit6">6</div>
+      <div class="tecla" data-key="Digit7">7</div>
+      <div class="tecla" data-key="Digit8">8</div>
+      <div class="tecla" data-key="Digit9">9</div>
+      <div class="tecla" data-key="Digit0">0</div>
+      <div class="tecla" data-key="Minus">-</div>
+      <div class="tecla" data-key="Equal">=</div>
     </div>
+    <div class="linha">
+      <div class="tecla" data-key="KeyQ">Q</div>
+      <div class="tecla" data-key="KeyW">W</div>
+      <div class="tecla" data-key="KeyE">E</div>
+      <div class="tecla" data-key="KeyR">R</div>
+      <div class="tecla" data-key="KeyT">T</div>
+      <div class="tecla" data-key="KeyY">Y</div>
+      <div class="tecla" data-key="KeyU">U</div>
+      <div class="tecla" data-key="KeyI">I</div>
+      <div class="tecla" data-key="KeyO">O</div>
+      <div class="tecla" data-key="KeyP">P</div>
+      <div class="tecla" data-key="BracketLeft">[</div>
+      <div class="tecla" data-key="BracketRight">]</div>
+      <div class="tecla" data-key="Backslash">\</div>
+    </div>
+    <div class="linha">
+      <div class="tecla" data-key="KeyA">A</div>
+      <div class="tecla" data-key="KeyS">S</div>
+      <div class="tecla" data-key="KeyD">D</div>
+      <div class="tecla" data-key="KeyF">F</div>
+      <div class="tecla" data-key="KeyG">G</div>
+      <div class="tecla" data-key="KeyH">H</div>
+      <div class="tecla" data-key="KeyJ">J</div>
+      <div class="tecla" data-key="KeyK">K</div>
+      <div class="tecla" data-key="KeyL">L</div>
+      <div class="tecla" data-key="Semicolon">Ç</div>
+      <div class="tecla" data-key="Quote">'</div>
+      <div class="tecla" data-key="IntlBackslash">~</div>
+    </div>
+    <div class="linha">
+      <div class="tecla" data-key="ShiftLeft" style="width:125px">SHIFT</div>
+      <div class="tecla" data-key="KeyZ">Z</div>
+      <div class="tecla" data-key="KeyX">X</div>
+      <div class="tecla" data-key="KeyC">C</div>
+      <div class="tecla" data-key="KeyV">V</div>
+      <div class="tecla" data-key="KeyB">B</div>
+      <div class="tecla" data-key="KeyN">N</div>
+      <div class="tecla" data-key="KeyM">M</div>
+      <div class="tecla" data-key="Comma">,</div>
+      <div class="tecla" data-key="Period">.</div>
+      <div class="tecla" data-key="Slash">;</div>
+      <div class="tecla" data-key="ShiftRight" style="width:125px">SHIFT</div>
+    </div>
+    <div class="linha">
+      <div class="tecla" data-key="Space" style="width: 360px;">ESPAÇO</div>
+    </div>
+  </div>
 
   <div class="botoes">
     <button onclick="reiniciar()">Repetir</button>
     <button onclick="window.location.href='index.html'">Voltar</button>
-    <button id="proximoBtn" style="display:none;" onclick="window.location.href='silabas.html'">Próximo Nível</button>
+    <button id="proximoBtn" style="display:none;" onclick="window.location.href='silabas.html'">FINALIZAR</button>
   </div>
 
-  <script>
-    const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-    const letraDiv = document.getElementById("letraAlvo");
-    const msgDiv = document.getElementById("mensagem");
-    const proximoBtn = document.getElementById("proximoBtn");
-    let letraAtual = "A";
-    let acertos = 0;
-
-    function gerarNovaLetra() {
-      letraAtual = letras[Math.floor(Math.random() * letras.length)];
-      letraDiv.textContent = letraAtual;
-      msgDiv.textContent = "";
-      msgDiv.style.color = "#119B3A";
-    }
-
-    function getEventKey(e) {
-      if (e.code === "Space") return "Space";
-      if (e.code === "Semicolon" && e.key === "ç") return "Semicolon";
-      if (e.code === "Quote" && e.key === "'") return "Quote";
-      if (e.code === "IntlBackslash" || (e.key === "~" && e.code !== "Backquote")) return "IntlBackslash";
-      return e.code;
-    }
-
-    document.addEventListener("keydown", function(e) {
-      const tecla = e.key.toUpperCase();
-      const eventKey = getEventKey(e);
-      const teclaEl = document.querySelector(`.tecla[data-key="${eventKey}"]`);
-
-      document.querySelectorAll('.tecla').forEach(el => {
-        el.classList.remove('certa', 'errada');
-      });
-
-      if (teclaEl) {
-        teclaEl.classList.add("ativa");
-        setTimeout(() => teclaEl.classList.remove("ativa"), 300);
-      }
-
-      if (tecla === letraAtual) {
-        msgDiv.textContent = "Parabéns! Você acertou!";
-        msgDiv.style.color = "#18D262";
-        if (teclaEl) {
-          teclaEl.classList.add('certa');
-          setTimeout(() => teclaEl.classList.remove('certa'), 500);
-        }
-        acertos++;
-        if (acertos >= 5) {
-          proximoBtn.style.display = "inline-block";
-          msgDiv.textContent += " Nível completo!";
-        } else {
-          setTimeout(gerarNovaLetra, 1000);
-        }
-      } else {
-        msgDiv.textContent = "Tente novamente.";
-        msgDiv.style.color = "#FF3030";
-        if (teclaEl) {
-          teclaEl.classList.add('errada');
-          setTimeout(() => teclaEl.classList.remove('errada'), 500);
-        }
-      }
-    });
-
-    function reiniciar() {
-      acertos = 0;
-      proximoBtn.style.display = "none";
-      gerarNovaLetra();
-    }
-
-    gerarNovaLetra();
-  </script>
+  <script src="src/js/fase1.js"></script>
 </body>
 </html>

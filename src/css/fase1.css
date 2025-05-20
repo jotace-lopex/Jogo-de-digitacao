@@ -1,0 +1,126 @@
+body {
+    background-color: #0A1F44;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 2rem;
+    color: #F8F8F8;
+    min-height: 100vh;
+  }
+  h1 {
+    font-size: 2.5rem;
+    color: #FF8800;
+    margin-bottom: 2rem;
+  }
+  .letra-alvo {
+    font-size: 7rem;
+    color: #FF8800;
+    margin: 2rem 0 1.3rem 0;
+    text-shadow: 2px 2px 8px #000a;
+  }
+  .mensagem {
+    font-size: 2rem;
+    margin: 0.5rem 0 1.2rem 0;
+    min-height: 2.5rem;
+    font-weight: bold;
+    color: #119B3A;
+  }
+  .teclado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    background: #0A1F44;
+    padding: 1.2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px #0008;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 4px solid #fff;
+    transition: box-shadow 0.2s;
+  }
+  .linha {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+  .tecla {
+    width: 58px;
+    height: 58px;
+    font-size: 2.15rem;
+    background: #0A1F44;
+    color: #fff;
+    border: 3px solid #FF8800;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s, border-color 0.2s, box-shadow 0.2s;
+    user-select: none;
+    font-family: Arial, sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    font-weight: bold;
+    box-shadow: 0 2px 10px #0005;
+  }
+  .tecla.ativa {
+    background: #FF8800;
+    color: #0A1F44;
+    border-color: #fff;
+    box-shadow: 0 0 18px #FF8800, 0 2px 10px #0005;
+  }
+  .tecla.certa {
+    background: #18D262 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    box-shadow: 0 0 16px #18D262, 0 2px 10px #0005 !important;
+  }
+  .tecla.errada {
+    background: #FF3030 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    box-shadow: 0 0 18px #FF3030, 0 2px 10px #0005 !important;
+  }
+  .botoes {
+    margin-top: 2.2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .botoes button {
+    font-size: 1.5rem;
+    padding: 1rem 2.3rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #FF8800;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0006;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: background 0.15s, color 0.15s, transform 0.18s;
+  }
+  .botoes button:hover,
+  .botoes button:focus {
+    background-color: #fff;
+    color: #FF8800;
+    outline: 2px solid #FF8800;
+    transform: scale(1.08);
+  }
+  #proximoBtn {
+    background: #18D262 !important;
+    color: #fff !important;
+    border: none;
+    transition: background 0.15s, color 0.15s, transform 0.18s;
+    box-shadow: 0 2px 8px #18D262cc;
+  }
+  #proximoBtn:hover, #proximoBtn:focus {
+    background: #14b450 !important;
+    color: #fff !important;
+    outline: 2px solid #18D262;
+    transform: scale(1.08);
+  }
+  
