@@ -3,10 +3,23 @@ const letraDiv = document.getElementById("letraAlvo");
 const msgDiv = document.getElementById("mensagem");
 const proximoBtn = document.getElementById("proximoBtn");
 let letraAtual = "A";
+let letraAnterior = "";
 let acertos = 0;
+let faseFinalizada = false;
+let usadas = [];
 
 function gerarNovaLetra() {
-  letraAtual = letras[Math.floor(Math.random() * letras.length)];
+  if (usadas.length >= 10) return;
+
+  let novaLetra;
+  do {
+    novaLetra = letras[Math.floor(Math.random() * letras.length)];
+  } while (novaLetra === letraAnterior || usadas.includes(novaLetra));
+
+  letraAtual = novaLetra;
+  letraAnterior = novaLetra;
+  usadas.push(novaLetra);
+
   letraDiv.textContent = letraAtual;
   msgDiv.textContent = "";
   msgDiv.style.color = "#119B3A";
@@ -21,6 +34,8 @@ function getEventKey(e) {
 }
 
 document.addEventListener("keydown", function(e) {
+  if (faseFinalizada) return;
+
   const tecla = e.key.toUpperCase();
   const eventKey = getEventKey(e);
   const teclaEl = document.querySelector(`.tecla[data-key="${eventKey}"]`);
@@ -42,7 +57,8 @@ document.addEventListener("keydown", function(e) {
       setTimeout(() => teclaEl.classList.remove('certa'), 500);
     }
     acertos++;
-    if (acertos >= 5) {
+    if (acertos >= 10) {
+      faseFinalizada = true;
       proximoBtn.style.display = "inline-block";
       msgDiv.textContent += " Nível completo!";
     } else {
@@ -60,6 +76,8 @@ document.addEventListener("keydown", function(e) {
 
 function reiniciar() {
   acertos = 0;
+  faseFinalizada = false;
+  usadas = [];
   proximoBtn.style.display = "none";
   gerarNovaLetra();
 }
